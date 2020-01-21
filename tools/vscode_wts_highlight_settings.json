@@ -1,0 +1,101 @@
+{
+    // 用于Visual Studio Code - Highlight扩展的.wts文件高亮配置，扩展地址：
+    // https://marketplace.visualstudio.com/items?itemName=fabiospampinato.vscode-highlight
+    // nan@yukimi.cn, 2020-01-21
+    "highlight.maxMatches": 9999, // 不够再加
+    "highlight.regexes": { // 注意：顺序很重要
+        "(//.*)": { // 单行注释
+            "filterFileRegex": ".*\\.wts",
+            "decorations": [
+                {
+                    "color": "rgb(117,113,94)"
+                }
+            ]
+        },
+        "(\\|n)": { // 换行符
+            "filterFileRegex": ".*\\.wts",
+            "decorations": [
+                {
+                    "color": "rgb(174,129,255)"
+                }
+            ]
+        },
+        "(\\|c[0-9a-f]{8})(.+?)(\\|r)": { // 颜色标签（注意：非贪婪）
+            "filterFileRegex": ".*\\.wts",
+            "decorations": [
+                {
+                    "color": "rgb(174,129,255)"
+                },
+                {
+                    "color": "rgb(253,151,31)"
+                },
+                {
+                    "color": "rgb(174,129,255)"
+                }
+            ]
+        },
+        "(\\|c[0-9a-f]{0,7}.+?)(\\|r)?": { // 颜色标签，一般错误（注意：非贪婪）
+            "filterFileRegex": ".*\\.wts",
+            "decorations": [
+                {
+                    "color": "red"
+                },
+                {
+                    "color": "red"
+                }
+            ]
+        },
+        "(\\|r)": { // 颜色标签，|c丢失（文本只会被染色一次，本条目不会覆盖先前正确的染色）
+            "filterFileRegex": ".*\\.wts",
+            "decorations": [
+                {
+                    "color": "red"
+                }
+            ]
+        },
+        "(\\|[^ncr])": { // 错误转义
+            "filterFileRegex": ".*\\.wts",
+            "decorations": [
+                {
+                    "color": "red"
+                }
+            ]
+        },
+        "(STRING)(\\s+)(\\d+)": { // 字符串定义(head)
+            "filterFileRegex": ".*\\.wts",
+            "decorations": [
+                {
+                    "color": "rgb(102,217,239)"
+                },
+                {},
+                {
+                    "color": "rgb(166,226,46)"
+                }
+            ]
+        },
+        "(\\{)((.|\\s)+?)(\\})": { // 字符串定义(body)
+            "filterFileRegex": ".*\\.wts",
+            "decorations": [
+                {
+                    "color": "white"
+                },
+                {
+                    "color": "rgb(230,219,116)"
+                },
+                {
+                    "color": "white"
+                }
+            ]
+        },
+        "(^|\\})((.|\\s)+?)((STRING)|$)": { // 定义外的字符串
+            "filterFileRegex": ".*\\.wts",
+            "decorations": [
+                {},
+                {
+                    "color": "red"
+                },
+                {}
+            ]
+        },
+    }
+}
